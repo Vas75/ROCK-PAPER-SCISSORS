@@ -5,7 +5,7 @@ function computerPlay() {
   return picks[index];
 }
 
-function roundMssg(...result) {
+function roundMssg(result) {
   if (result[0] === "draw") {
     console.log("It was a draw!");
     return;
@@ -37,37 +37,37 @@ function game() {
 
   function playRound(playerSelect, computerSelect = computerPlay()) {
     const playerSelect2 = playerSelect.toLowerCase();
-    const result; 
+    let result;
 
     if (playerSelect2 === computerSelect) {
-        result = ['draw'];
-        
+      result = ["draw"];
     } else if (playerSelect2 === "rock") {
       if (computerSelect === "scissors") {
-          result = []
-        roundMssg("player", playerSelect2, computerSelect);
+        result = ["player", playerSelect2, computerSelect];
         playerScore++;
       } else {
-        roundMssg("computer", computerSelect, playerSelect2);
+        result = ["computer", computerSelect, playerSelect2];
         computerScore++;
       }
     } else if (playerSelect2 === "paper") {
       if (computerSelect === "rock") {
-        roundMssg("player", playerSelect2, computerSelect);
+        result = ["player", playerSelect2, computerSelect];
         playerScore++;
       } else {
-        roundMssg("computer", computerSelect, playerSelect2);
+        result = ["computer", computerSelect, playerSelect2];
         computerScore++;
       }
     } else if (playerSelect2 === "scissors") {
       if (computerSelect === "paper") {
-        roundMssg("player", playerSelect2, computerSelect);
+        result = ["player", playerSelect2, computerSelect];
         playerScore++;
       } else {
-        roundMssg("computer", computerSelect, playerSelect2);
+        result = ["computer", computerSelect, playerSelect2];
         computerScore++;
       }
     }
+
+    roundMssg(result);
   }
 
   for (let i = 1; i <= 5; i++) {
