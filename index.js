@@ -31,6 +31,8 @@ function calcScore(result) {
 
   if (score.playerScore >= 5 || score.computerScore >= 5) {
     showWinner();
+    score.playerScore = 0; //game over, reset global score
+    score.computerScore = 0;
   } else {
     showRndMssg(result);
   }
@@ -78,54 +80,6 @@ function playRound(playerSelect) {
   }
   calcScore(result);
 }
-
-// function game() {
-//   let playerScore = 0;
-//   let computerScore = 0;
-
-//   function playRound(playerSelect) {
-//     const computerSelect = computerPlay();
-//     const playerSelect2 = playerSelect.toLowerCase();
-//     let result;
-
-//     if (playerSelect2 === computerSelect) {
-//       result = ["draw"];
-//     } else if (playerSelect2 === "rock") {
-//       if (computerSelect === "scissors") {
-//         result = ["player", playerSelect2, computerSelect];
-//         playerScore++;
-//       } else {
-//         result = ["computer", computerSelect, playerSelect2];
-//         computerScore++;
-//       }
-//     } else if (playerSelect2 === "paper") {
-//       if (computerSelect === "rock") {
-//         result = ["player", playerSelect2, computerSelect];
-//         playerScore++;
-//       } else {
-//         result = ["computer", computerSelect, playerSelect2];
-//         computerScore++;
-//       }
-//     } else if (playerSelect2 === "scissors") {
-//       if (computerSelect === "paper") {
-//         result = ["player", playerSelect2, computerSelect];
-//         playerScore++;
-//       } else {
-//         result = ["computer", computerSelect, playerSelect2];
-//         computerScore++;
-//       }
-//     }
-
-//     roundMssg(result);
-//   }
-
-//   for (let i = 1; i <= 5; i++) {
-//     const pick = prompt("Enter rock, paper, or scissors.");
-//     playRound(pick);
-//   }
-
-//   showWinner(playerScore, computerScore);
-// }
 
 /* 
 game() calls play round function 5 times.
