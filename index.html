@@ -7,7 +7,23 @@
     <title>Rock, Paper, Scissors</title>
   </head>
   <body>
-    <h1>Type game() in console to play.</h1>
+    <div class="container">
+      <h1>Rock, Paper, Scissors</h1>
+      <h2>Choose below to begin game.</h2>
+      <div class="scores">
+        <div class="player-score">player: <span id="userTally">0</span></div>
+        <div class="computer-score">
+          computer: <span id="computerTally">0</span>
+        </div>
+      </div>
+
+      <div class="options">
+        <button class="option rock">ROCK</button>
+        <button class="option paper">PAPER</button>
+        <button class="option scissors">SCISSORS</button>
+      </div>
+      <div class="results" id="results"><!--results go here--></div>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>

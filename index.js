@@ -1,3 +1,8 @@
+const options = document.querySelectorAll(".option");
+const userTally = document.querySelector("#userTally");
+const computerTally = document.querySelector("#computerTally");
+const resultDisplay = document.querySelector("#results");
+
 let score = {
   playerScore: 0,
   computerScore: 0,
@@ -12,14 +17,14 @@ function computerPlay() {
 
 function showRndMssg(result) {
   if (result[0] === "draw") {
-    console.log("It was a draw!"); //display in ui
+    resultDisplay.textContent = "It was a draw!";
     return;
   }
 
   let temp = result[0] === "player" ? "Won" : "Lost";
   let upperCased = result[1].slice(0, 1).toUpperCase() + result[1].slice(1);
 
-  console.log(`You ${temp}! ${upperCased} beats ${result[2]}!`); //display
+  resultDisplay.textContent = `You ${temp}! ${upperCased} beats ${result[2]}!`;
 }
 
 function calcScore(result) {
@@ -36,6 +41,7 @@ function calcScore(result) {
   } else {
     showRndMssg(result);
   }
+  showScore(); //update score in ui
 }
 
 function showWinner() {
@@ -44,12 +50,17 @@ function showWinner() {
   const playScore = score.playerScore;
 
   if (playScore > compScore) {
-    message = "You won the game!";
+    message = `You won the game! Final score: ${playScore} - ${compScore}`;
   } else {
-    message = "Sorry, you lost the game!";
+    message = `Sorry, you lost the game! Final score: ${compScore} - ${playScore}`;
   }
 
-  console.log(message);
+  resultDisplay.textContent = message;
+}
+
+function showScore() {
+  userTally.textContent = score.playerScore;
+  computerTally.textContent = score.computerScore;
 }
 
 function playRound(playerSelect) {
@@ -89,3 +100,10 @@ track score, first to five wins
 
 display win mssg, and clear score.
 */
+
+options.forEach((option) => {
+  option.addEventListener("click", (e) => {
+    const playerPick = e.target.textContent;
+    playRound(playerPick);
+  });
+});
