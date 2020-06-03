@@ -92,18 +92,9 @@ function playRound(playerSelect) {
   calcScore(result);
 }
 
-/* 
-game() calls play round function 5 times.
-set up to run play on 1st pick
-
-track score, first to five wins
-
-display win mssg, and clear score.
-*/
-
 options.forEach((option) => {
   option.addEventListener("click", (e) => {
-    const playerPick = e.target.textContent;
+    const playerPick = e.target.dataset.option;
     playRound(playerPick);
   });
 });
